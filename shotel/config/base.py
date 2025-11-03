@@ -18,6 +18,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'channels',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
     'corsheaders',
 
     'shotel.app.core',
