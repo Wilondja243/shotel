@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import CreateAPIView
 
 
@@ -80,3 +81,7 @@ class LoginApiView(CreateAPIView):
         )
             
 
+class UserViewSet(ModelViewSet):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,]
+    queryset = User.objects.all()
