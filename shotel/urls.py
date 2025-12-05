@@ -28,7 +28,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('home/', include("shotel.app.urls"))
+    path('', include("shotel.app.urls"))
 ]
 
 if settings.DEBUG:

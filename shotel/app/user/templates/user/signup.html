@@ -1,0 +1,45 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<div class="form-rwapper">
+    <form method="post">
+        {% csrf_token %}
+
+        <h1>Inscription</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+            <div class="error">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="inputs">
+            <div class="input-username input">
+                {{ form.username.label }}
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="input-email input">
+                {{ form.email.label }}
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <div class="input-password input">
+                {{ form.password.label }}
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+        </div>
+        <button type="submit" class="btn ">S'inscrir</button>
+    </form>
+
+    <div class="account">
+        <small>N'avez vous pas de compte?</small>
+        <a href="{% url "login" %}">Login</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

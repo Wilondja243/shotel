@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+body{
+    background: whitesmoke;
+}
+
+
+.btn{
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    background: #000514;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: #00030c;
+}
+
+h1, h2, h3{
+    font-weight: bold;
+    color: #00030c;
+}
+h1{font-size: 35px;}
+h2{font-size: 30px;}
+h3{font-size: 25px;}

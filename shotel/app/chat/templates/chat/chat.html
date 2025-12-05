@@ -1,0 +1,41 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="content">
+        <div class="header">
+            {{ other_user.username }}
+            {{ other_user.email }}
+        </div>
+        <div class="chat-box">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.sender == request.user %}
+            <div class="sender" style="color: green">
+                <p>
+                    {{ message.message }}
+                    {{ message.created_at|date:'H:i' }}
+                </p><br>
+            </div>
+            {% else %}
+            <div class="receiver" style="color: blue">
+                <p>{{ message.message }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <div>Aucune discussion disponible</div>
+            {% endif %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.message }}
+
+            <button type="submit">send</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

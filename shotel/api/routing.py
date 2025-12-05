@@ -4,5 +4,5 @@ from shotel.app.consummers import Consommer
 
 
 websocket_urlpatterns = [
-    path('ws/entry/', Consommer.as_asgi()),
+    path('ws/api/test/', Consommer.as_asgi()),
 ]

@@ -23,7 +23,6 @@ class UserApiView(CreateAPIView):
 
         if serializer.is_valid():
             user = serializer.save()
-            print("User type is : ", type(user))
             token, create = Token.objects.get_or_create(user=user)
 
             return Response(
@@ -83,5 +82,5 @@ class LoginApiView(CreateAPIView):
 
 class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated,]
+    # permission_classes = [IsAuthenticated,]
     queryset = User.objects.all()

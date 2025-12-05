@@ -7,7 +7,7 @@ from django.core.asgi import get_asgi_application
 
 from shotel.api.routing import websocket_urlpatterns
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shotel.config.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shotel.config.development')
 
 django_asgi_app = get_asgi_application()
 
