@@ -9,6 +9,10 @@ class ChatForm(forms.ModelForm):
         model = Chat
         fields = ['message',]
 
-        widget = {
-            "message": forms.TextInput(attrs={"placeholder": "message", "required": False})
+        widgets = {
+            "message": forms.TextInput(attrs={
+                "class": "input-message",
+                "placeholder": "Envoyer un message",
+                "required": False
+            })
         }
