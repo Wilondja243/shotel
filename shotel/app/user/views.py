@@ -32,7 +32,7 @@ class SignupView(View):
                 user.set_password(form.cleaned_data['password'])
                 user.save()
                 messages.success(request, "Utilisateur crée avec success.")
-                return redirect("home")
+                return redirect(reverse("home"))
         else:
             form = self.form_class()
         return render(request, self.template_name, {'form': form})

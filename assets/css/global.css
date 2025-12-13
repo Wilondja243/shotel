@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+:root{
+    --bs-text: #ffffff;
+    --bs-text-muted: #ffffffa6;
+    --bs-bg: #0f131a;
+    --bs-card: #151a22;
+    --bs-btn: #ce0089;
+    --bs-btn-h: #a7006f;
+    --bs-success: #008000;
+    --bs-warning: #ec003b;
+    --bs-danger: #ee0000;
+
+    --bs-border: #dddddd10;
+
+    --left-bar-width: 250px;
+}
+
+/* @font-face {
+    font-family: 'mona_sans'; 
+    src: url('../font/mona_sans/MonaSans-SemiBold.ttf') format('truetype');
+    font-weight: normal; 
+    font-style: normal;
+} */
+
+body{
+    background: var(--bs-bg);
+    overflow-y: hidden;
+    /* background: var(--bs-bg) url("/assets/images/bg.svg");
+    font-family: 'mona_sans';
+    line-height: 1.6;
+    color: var(--clr-text);
+    -webkit-font-smoothing: antialiased; */
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+.wrapper{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+.content{
+    margin: 10px;
+    padding: 10px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profil{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--bs-btn-h);
+    overflow: hidden;
+    cursor: pointer;
+}
+.profil img{
+    border-radius: 50%;
+}
+.profil:hover img{
+    transform: scale(1.3);
+}
+
+.btn{
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    color: var(--bs-text);
+    background: var(--bs-btn);
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: var(--bs-btn-h);
+}
+
+h1, h2, h3{
+    font-weight: bold;
+    color: var(--bs-text);
+}
+h1{font-size: 35px;}
+h2{font-size: 30px;}
+h3{font-size: 25px;}
+
+p{line-height: 24px;}
+
+span, small{color: var(--bs-text-muted);}

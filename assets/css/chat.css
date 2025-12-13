@@ -1,10 +1,15 @@
-.content{
+.chat-content{
+    padding: 0;
+    margin: 0;
+}
+
+.chat-box{
     background: #1b212e url("/assets/images/bg.svg");
-    background-attachment: scroll;
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     display: flex;
     flex-direction: column;
-    height: 100vw;
+    position: relative;
 }
 
 .chat-box .chat-header{
@@ -16,17 +21,13 @@
     padding: 10px 15px;
     width: 100%;
     position: sticky;
-    top: 0;
+    top: 60px;
 }
-.chat-header .chat-header-profil{
+/* .chat-header .chat-header-profil{
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-    border: 2px solid #4EB5AC;
 }
-.chat-header-profil img{
-    border-radius: 50%;
-}
+*/
 .chat-header .infos{
     display: flex;
     flex-direction: column;
@@ -42,6 +43,7 @@
 .chat-box .messages{
     padding: 10px 25px;
     margin-top: auto;
+    height: 100vh;
 }
 .chat-box .message{
     margin-top: 15px;
@@ -89,7 +91,6 @@
     background: #192030;
     column-gap: 8px;
     padding: 10px 15px;
-    width: 100%;
     position: sticky;
     bottom: 0;
 }

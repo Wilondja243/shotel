@@ -1,0 +1,45 @@
+{% extends "./base/base.html" %}
+
+{% load static %}
+
+{% block title %} Friends {% endblock %}
+
+{% block side_bar %}
+    {% include "./base/left-bar.html" %}
+{% endblock %}
+
+{% block top_bar %}
+    {% include "./base/top-bar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <div class="friend">
+        <h2>Friends</h2>
+
+        <div class="friend__list">
+
+            {% if friends %}
+            {% for friend in friends %}
+                <div class="item">
+                    <div>
+                        <div class="profil">
+                            <img src="{% static 'images/default_profil.jpg' %}">
+                        </div>
+                        <div>
+                            <b>{{ friend.username }}</b>
+                            <small>Bujumbura Burundi</small>
+                        </div>
+                    </div>
+                    <button class="btn add" id="add{{friend.id}}" onClick="addFriend('{{ friend.id }}')">Add Friend</button>
+                </div>
+            {% endfor %}
+            {% else %}
+                <div class="no-data">No friends available.</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

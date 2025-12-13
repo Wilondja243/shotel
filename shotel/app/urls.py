@@ -1,13 +1,24 @@
 from django.urls import path, include
 from shotel.app.user.views import SignupView, LoginView
-from shotel.app.chat.views import HomeView, ChatView
+from shotel.app.chat.views import ChatView
+from shotel.app.entry.views import (
+    HomeView,
+    FriendView,
+    FollowerView
+)
+from shotel.app.entry.stream import notification_stream
 
 urlpatterns = [
     # user
     path("signup/", SignupView.as_view(), name="signup"),
     path("account/login/", LoginView.as_view(), name="login"),
 
-    # chat
+    # entry
     path("home/", HomeView.as_view(), name="home"),
-    path("chat/<uuid:receive_id>/", ChatView.as_view(), name="chat")
+    path("home/friends/", FriendView.as_view(), name="friend"),
+    path("home/follower", FollowerView.as_view(), name="follower"),
+    path("chat/<uuid:receive_id>/", ChatView.as_view(), name="chat"),
+
+    # Notification stream
+    path("home/stream/notification/", notification_stream, name="notification_stream")
 ]

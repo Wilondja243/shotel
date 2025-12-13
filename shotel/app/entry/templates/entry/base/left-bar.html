@@ -1,0 +1,16 @@
+<aside class="left-bar">
+    <h1 class="logo">Shotel</h1>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="{% url 'home' %}" class="link"><i class="bi bi-house-door"></i>Home</a></li>
+            <li><a href="" class="link"><i class="bi bi-person"></i>Profil</a></li>
+            <li><a href="{% url 'friend' %}"><i class="bi bi-people"></i>Friends</a></li>
+            <li><a href="{% url 'follower' %}" class="link"><i class="bi bi-people"></i>Followers</a></li>
+            {% comment %} <li><a href="{% url 'chat' %}" class="link"><i class="bi bi-chat-dots"></i>Chat</a></li> {% endcomment %}
+            <li><a href="" class="link"><i class="bi bi-gear"></i>Settings</a></li>
+        </ul>
+        {% comment %} <div class="btns">
+            
+        </div> {% endcomment %}
+    </nav>
+</aside>

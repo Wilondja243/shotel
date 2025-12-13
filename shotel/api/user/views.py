@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -12,7 +11,7 @@ from rest_framework.generics import CreateAPIView
 
 
 from shotel.app.user.models import User
-from shotel.api.serializers import LoginSerializer, UserSerializer
+from shotel.api.user.serializers import LoginSerializer, UserSerializer
 
 class UserApiView(CreateAPIView):
     serializer_class = UserSerializer

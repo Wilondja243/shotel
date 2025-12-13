@@ -1,0 +1,23 @@
+{% load static %}
+
+<header class="top-header">
+    <div class="top-bar">
+        <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Recherche rapide">
+        </div>
+        
+        <div class="user-info">
+            <div class="setting">
+                <i class="bi bi-gear"></i>
+            </div>
+            <div class="notification">
+                <i class="bi bi-bell"></i>
+                <small></small>
+            </div>
+            <div class="user-avatar profil">
+                <img src="{% static  'images/default_profil.jpg' %}" alt="Profil utilisateur" />
+            </div>
+        </div>
+    </div>
+</header>

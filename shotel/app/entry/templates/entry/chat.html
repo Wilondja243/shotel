@@ -1,0 +1,65 @@
+{% extends "./base/base.html" %}
+
+{% load static %}
+
+{% block title %} Chat {% endblock %}
+
+{% block side_bar %}
+    {% include "./base/left-bar.html" %}
+{% endblock %}
+
+{% block top_bar %}
+    {% include "./base/top-bar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="content chat-content">
+    <div class="chat-box">
+        <div class="chat-header">
+            <div class="chat-header-profil profil">
+                <img src="{% static  'images/woman-posing.jpg' %}" alt="Profil utilisateur" />
+            </div>
+            <div class="infos">
+                <b>{{ other_user.username }}</b>
+                <small>{{ other_user.email }}</small>
+            </div>
+        </div>
+        <div class="messages">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.sender == request.user %}
+                <div class="sender">
+                    <div class="sender-message message">
+                        <span>
+                            {{ message.message }}
+                            <small>{{ message.created_at|date:'H:i' }}</small>
+                        </span>
+                        
+                    </div>
+                </div>
+            {% else %}
+                <div class="receiver">
+                    <div class="receiver-message message">
+                        <span>
+                            {{ message.message }}
+                            <small>{{ message.created_at|date:'H:i' }}</small>
+                        </span>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% else %}
+            <div>Aucune discussion disponible</div>
+        {% endif %}
+        </div>
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            <i class="bi bi-emoji-smile"></i>
+            {{form.message}}
+            <button type="submit" class="bi bi-send"></button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

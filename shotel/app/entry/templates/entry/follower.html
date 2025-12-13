@@ -1,0 +1,50 @@
+{% extends "./base/base.html" %}
+
+{% load static %}
+
+{% block title %} Friends {% endblock %}
+
+{% block side_bar %}
+    {% include "./base/left-bar.html" %}
+{% endblock %}
+
+{% block top_bar %}
+    {% include "./base/top-bar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <div class="friend">
+        <div class="followers">
+            <a href="" class="btn">Followers</a>
+            <a href="" class="btn">Following</a>
+        </div>
+
+        <div class="friend__list" id="follower_list">
+
+            {% if followers %}
+            {% for follower in followers %}
+            <div class="item">
+                <div>
+                    <a href="">
+                    <div class="profil">
+                        <img src="{% static 'images/default_profil.jpg' %}">
+                    </div>
+                    </a>
+                    <div>
+                        <b>{{ follower.following.username }}</b>
+                        <small>Bujumbura Burundi</small>
+                    </div>
+                </div>
+                <a href="{% url 'chat' follower.following.id %}" class="bi bi-chat-dots btn"></a>
+            </div>
+            {% endfor %}
+            {% else %}
+                <div class="no-data">No Followers available</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

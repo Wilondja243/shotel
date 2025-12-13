@@ -12,6 +12,7 @@ class User(AbstractUser):
         ('user', 'user'),
     )
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    is_my_follower = models.BooleanField(default=False)
     role = models.CharField(max_length=50, choices=ROLE_CHOISES)
 
     def clean(self):

@@ -9,9 +9,9 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Waiteka API",
+        title="Shotel API",
         default_version="v1",
-        description="Waiteka documentation",
+        description="Shotel documentation",
         license=openapi.License(name="MIT License"),
     ),
     public=True,

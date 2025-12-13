@@ -3,6 +3,7 @@ from rest_framework import routers
 
 from shotel.api.user.views import UserApiView, LoginApiView
 from shotel.api.user.views import UserViewSet
+from shotel.api.entry.views import FollowerAPIView
 
 
 router = routers.DefaultRouter()
@@ -13,5 +14,6 @@ urlpatterns = [
     path('account/signup/', UserApiView.as_view(), name="signup"),
     path('account/login/', LoginApiView.as_view(), name="login"),
 
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('followers/', FollowerAPIView.as_view(), name="follower"),
 ]

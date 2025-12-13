@@ -8,17 +8,8 @@ from shotel.app.chat.models import Chat
 from shotel.app.chat.forms import ChatForm
 
 
-class HomeView(LoginRequiredMixin, ListView):
-    template_name = "chat/index.html"
-
-    def get(self, request):
-        users = User.objects.exclude(id=request.user.id)
-        print(f"users: {users}")
-        return render(request, self.template_name, {"users": users})
-
-
 class ChatView(LoginRequiredMixin, View):
-    template_name = "chat/chat.html"
+    template_name = "entry/chat.html"
     form_class = ChatForm
 
     def get(self, request, receive_id):
