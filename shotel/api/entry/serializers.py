@@ -22,7 +22,7 @@ class FollowerSerializer(serializers.ModelSerializer):
 
 # Following serializer
 class FollowingSerializer(serializers.ModelSerializer):
-    follower = UserMiniSerializer(read_only = True)
+    following = UserMiniSerializer(read_only = True)
 
     class Meta:
         model = Follower
