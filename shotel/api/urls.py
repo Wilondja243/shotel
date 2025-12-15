@@ -4,7 +4,8 @@ from rest_framework import routers
 from shotel.api.user.views import (
     UserViewSet,
     UserApiView,
-    LoginApiView
+    LoginApiView,
+    UserMeAPIView
 )
 from shotel.api.entry.views import (
     FollowerAPIView,
@@ -21,6 +22,7 @@ router.register(r"users", UserViewSet, basename='user')
 urlpatterns = [
     path('account/register/', UserApiView.as_view(), name="signup"),
     path('account/login/', LoginApiView.as_view(), name="login"),
+    path('user/me/', UserMeAPIView.as_view(), name="me"),
 
     path('', include(router.urls)),
     path('followers/', FollowerAPIView.as_view(), name="follower"),

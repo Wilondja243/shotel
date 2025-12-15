@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView
 
 
 from shotel.app.user.models import User
@@ -86,3 +86,11 @@ class UserViewSet(ModelViewSet):
 
     def get_queryset(self):
         return User.objects.exclude(id=self.request.user.id)
+
+
+class UserMeAPIView(RetrieveAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,]
+
+    def get_object(self):
+        return self.request.user
