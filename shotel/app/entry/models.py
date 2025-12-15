@@ -13,8 +13,19 @@ class Profil(BaseModel):
 
 class Follower(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    follower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="follower")
-    following = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following")
+    follower = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="follower"
+    )
+    following = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="following"
+    )
+
+    class Meta:
+        unique_together = ("follower", "following")
 
 
 class Notification(BaseModel):

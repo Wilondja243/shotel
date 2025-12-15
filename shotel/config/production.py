@@ -11,7 +11,7 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(',')
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    # "https://dealflow-9wex.onrender.com",
+    "https://shotel-n6id.onrender.com",
     "http://127.0.0.1:3000",
 ]
 

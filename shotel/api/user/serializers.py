@@ -6,7 +6,7 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'password']
+        fields = ['url', 'id', 'username', 'email', 'password']
         extra_kwargs = {
             'url': {'view_name': 'user-detail', 'lookup_field': 'pk'},
             'password': {'write_only': True}

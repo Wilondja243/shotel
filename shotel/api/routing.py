@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from shotel.app.consummers import Consommer
+from shotel.api.chat.consummers import ChatConsummer
 
 
 websocket_urlpatterns = [
-    path('ws/api/test/', Consommer.as_asgi()),
+    re_path(r'ws/chat/(?P<user_id>[0-9a-f-]+)/$', ChatConsummer.as_asgi()),
 ]

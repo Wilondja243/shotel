@@ -32,6 +32,7 @@ class UserApiView(CreateAPIView):
                         'id': user.id,
                         'username': user.username,
                         'email': user.email,
+                        'password': user.password
                     }
                 },
                 status=status.HTTP_201_CREATED
@@ -81,5 +82,7 @@ class LoginApiView(CreateAPIView):
 
 class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
-    # permission_classes = [IsAuthenticated,]
-    queryset = User.objects.all()
+    permission_classes = [IsAuthenticated,]
+
+    def get_queryset(self):
+        return User.objects.exclude(id=self.request.user.id)
