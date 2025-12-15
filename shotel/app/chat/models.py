@@ -9,3 +9,6 @@ class Chat(BaseModel):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="sender_message")
     receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="receiver_message")
     message = models.CharField()
+
+    class Meta:
+        ordering = ['created_at',]
