@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 
 from rest_framework.response import Response
 from rest_framework import status
@@ -37,9 +37,12 @@ class FollowingAPIView(ListAPIView):
     
 
 class FollowAPIView(APIView):
+    permission_classes = [IsAuthenticated,]
 
     def post(self, request, user_id):
-        if request.user.id == user_id:
+        user_to_follow = get_object_or_404(User, id=user_id)
+
+        if request.user == user_to_follow:
             return Response(
                 {'message': "You cannot follow yourself"},
                 status=status.HTTP_400_BAD_REQUEST
@@ -47,7 +50,7 @@ class FollowAPIView(APIView):
         
         follower, created = Follower.objects.get_or_create(
             follower = request.user,
-            following = user_id
+            following = user_to_follow
         )
 
         if not created:
@@ -63,11 +66,14 @@ class FollowAPIView(APIView):
 
 
 class UnfollowAPIView(APIView):
+    permission_classes = [IsAuthenticated,]
     
     def delete(self, request, user_id):
+        following = get_object_or_404(User, id=user_id)
+
         deleted, _ = Follower.objects.filter(
             follower = request.user,
-            following = user_id
+            following = following
         ).delete()
 
         if not deleted:
