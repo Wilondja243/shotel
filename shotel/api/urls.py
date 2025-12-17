@@ -12,7 +12,6 @@ from shotel.api.entry.views import (
     FollowingAPIView,
     UnfollowAPIView,
     FollowAPIView,
-    IsFollowAPIView
 )
 
 
