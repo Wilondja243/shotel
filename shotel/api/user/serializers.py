@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     
     def get_following_ids(self, obj):
-        return list(obj.following.values_list('following_ids', flat=True))
+        return list(obj.following.values_list('following_id', flat=True))
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
