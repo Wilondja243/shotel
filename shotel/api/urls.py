@@ -29,6 +29,6 @@ urlpatterns = [
     path('followers/', FollowerAPIView.as_view(), name="follower"),
     path('following/', FollowingAPIView.as_view(), name="following"),
     path('follow/<uuid:user_id>/', FollowAPIView.as_view(), name="follow"),
-    path('follow/is-following/<uuid:user_id>/', IsFollowAPIView.as_view(), name="is_following"),
+    # path('follow/is-following/<uuid:user_id>/', IsFollowAPIView.as_view(), name="is_following"),
     path('follwing/unfollow/<uuid:user_id>/', UnfollowAPIView.as_view(), name="unfollow"),
 ]

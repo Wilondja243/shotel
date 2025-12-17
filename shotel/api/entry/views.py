@@ -65,21 +65,21 @@ class FollowAPIView(APIView):
         )
 
 
-class IsFollowAPIView(APIView):
-    permission_classes = [IsAuthenticated,]
+# class IsFollowAPIView(APIView):
+#     permission_classes = [IsAuthenticated,]
 
-    def get(self, request, user_id):
-        user_to_follow = get_object_or_404(User, id=user_id)
+#     def get(self, request, user_id):
+#         user_to_follow = get_object_or_404(User, id=user_id)
 
-        is_following = Follower.objects.filter(
-            follower=request.user,
-            following=user_to_follow
-        ).exists()
+#         is_following = Follower.objects.filter(
+#             follower=request.user,
+#             following=user_to_follow
+#         ).exists()
 
-        return Response(
-            {"is_following": is_following},
-            status=status.HTTP_200_OK
-        )
+#         return Response(
+#             {"is_following": is_following},
+#             status=status.HTTP_200_OK
+#         )
 
 
 class UnfollowAPIView(APIView):
