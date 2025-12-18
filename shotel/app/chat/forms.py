@@ -1,12 +1,12 @@
 from django import forms
 
-from shotel.app.chat.models import Chat
+from shotel.app.chat.models import Message
 
 
 class ChatForm(forms.ModelForm):
 
     class Meta:
-        model = Chat
+        model = Message
         fields = ['message',]
 
         widgets = {

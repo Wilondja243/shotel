@@ -6,7 +6,7 @@ from shotel.app.entry.views import (
     FriendView,
     FollowerView
 )
-from shotel.app.entry.stream import notification_stream
+from shotel.app.publication.stream import notification_stream
 
 urlpatterns = [
     # user

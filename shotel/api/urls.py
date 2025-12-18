@@ -14,9 +14,9 @@ from shotel.api.entry.views import (
     FollowAPIView,
 )
 
-from shotel.api.chat.views import (
-    SendMessageAPIView,
-)
+# from shotel.api.chat.views import (
+#     SendMessageAPIView,
+# )
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet, basename='user')
@@ -38,5 +38,5 @@ urlpatterns = [
     path('follwing/unfollow/<uuid:user_id>/', UnfollowAPIView.as_view(), name="unfollow"),
 
     # Conversation
-    path('conversation/send-message/', SendMessageAPIView.as_view(), name="send-message")
+    # path('conversation/send-message/', SendMessageAPIView.as_view(), name="send-message")
 ]

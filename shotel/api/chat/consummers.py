@@ -35,14 +35,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
 
     @database_sync_to_async
-    def get_users(self, message):
+    def save_message(self, message):
         from shotel.app.user.models import User
-        from shotel.app.chat.models import Chat
+        from shotel.app.chat.models import Message
+        from shotel.app.chat.conversation import get_or_create_conversation
         
-        receiver_user = get_object_or_404(User, id=self.other_user_id)
+        other_user = get_object_or_404(User, id=self.other_user_id)
+        conversation = get_or_create_conversation(self.user, other_user)
 
-        Chat.objects.create(
+        Message.objects.create(
+            conversation=conversation,
             sender = self.user,
-            receiver = receiver_user,
             message = message
         )

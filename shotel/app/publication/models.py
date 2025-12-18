@@ -30,8 +30,16 @@ class Notification(BaseModel):
     )
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    receiver = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='receiver'
+    )
+    sender = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='sender'
+    )
     notification_type = models.CharField(max_length=15, choices=NOTIFICATION_TYPE)
     post = models.ForeignKey('Post', on_delete=models.CASCADE, null=True, blank=True)
     is_seen = models.BooleanField(default=False)

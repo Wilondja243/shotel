@@ -1,6 +1,6 @@
 import os
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shotel.config.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shotel.config.development')
 
 import django
 django.setup()
