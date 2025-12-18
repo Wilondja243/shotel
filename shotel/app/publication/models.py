@@ -9,7 +9,24 @@ class Post(BaseModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='posts/', null=True, blank=True)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Like', related_name='like_posts')
+    likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        through='Like',
+        related_name='like_posts'
+    )
+
+
+class Comment(BaseModel):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    content = models.TextField()
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.user.username}"
 
 
 class Like(BaseModel):
@@ -19,7 +36,6 @@ class Like(BaseModel):
 
     class Meta:
         unique_together = ('user', 'post')
-
 
 
 class Notification(BaseModel):

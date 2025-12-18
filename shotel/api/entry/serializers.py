@@ -13,7 +13,7 @@ class ProfilSerializer(serializers.ModelSerializer):
 
 # Followers serializer
 class FollowerSerializer(serializers.ModelSerializer):
-    follower = UserMiniSerializer(read_only = True)
+    follower = UserMiniSerializer(read_only=True)
 
     class Meta:
         model = Follower
@@ -22,7 +22,7 @@ class FollowerSerializer(serializers.ModelSerializer):
 
 # Following serializer
 class FollowingSerializer(serializers.ModelSerializer):
-    following = UserMiniSerializer(read_only = True)
+    following = UserMiniSerializer(read_only=True)
 
     class Meta:
         model = Follower
