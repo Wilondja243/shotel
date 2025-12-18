@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from shotel.app.entry.models import Follower, Profil
+from shotel.app.entry.models import Follower, Profile
 from shotel.app.user.models import User
 from .forms import AddFriendForm
 

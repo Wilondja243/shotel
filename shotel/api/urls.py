@@ -14,6 +14,13 @@ from shotel.api.entry.views import (
     FollowAPIView,
 )
 
+from shotel.api.publication.views import (
+    PostCreateView,
+    PostListView,
+    ToggleLikeAPIView,
+    ToggleLikeCommentAPIView,
+)
+
 # from shotel.api.chat.views import (
 #     SendMessageAPIView,
 # )
@@ -39,4 +46,11 @@ urlpatterns = [
 
     # Conversation
     # path('conversation/send-message/', SendMessageAPIView.as_view(), name="send-message")
+
+    # Publication
+    path('post/', PostListView.as_view(), name='post'),
+    path('post/create/', PostCreateView.as_view(), name="post-create"),
+    path('post/post-like/<uuid:post_id>/', ToggleLikeAPIView.as_view(), name='post-like'),
+    path('post/comment-like/<uuid:comment_id>/', ToggleLikeCommentAPIView.as_view(), name='comment-like'),
+
 ]
