@@ -16,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     
     def get_following_ids(self, obj):
+        print("obj.following.all(): ", obj.following.all())
         return list(obj.following.values_list('following_id', flat=True))
 
     def validate_email(self, value):

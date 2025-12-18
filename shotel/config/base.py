@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'shotel.app.user',
     'shotel.app.chat',
     'shotel.app.entry',
+    'shotel.app.publication',
 ]
 
 MIDDLEWARE = [
