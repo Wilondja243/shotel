@@ -4,14 +4,20 @@ from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
+    following_ids = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['url', 'id', 'username', 'email', 'password']
+        fields = ['url', 'id', 'username', 'email', 'password', 'following_ids']
         extra_kwargs = {
             'url': {'view_name': 'user-detail', 'lookup_field': 'pk'},
             'password': {'write_only': True}
         }
-        
+
+    
+    def get_following_ids(self, obj):
+        print("obj.following.all(): ", obj.following.all())
+        return list(obj.following.values_list('following_id', flat=True))
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():

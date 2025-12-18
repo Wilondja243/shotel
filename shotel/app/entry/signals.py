@@ -15,7 +15,7 @@ def create_user_profil(sender, instance, created, **kwargs):
 # @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 # def update_user_profil(sender, instance, **kwargs):
 #     try:
-#         instance.empployerprofil.save()
+#         instance.profil.save()
 #     except Exception as e:
 #         print(f"Error {str(e)}")
 

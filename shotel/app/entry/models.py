@@ -28,13 +28,3 @@ class Follower(BaseModel):
         unique_together = ("follower", "following")
 
 
-class Notification(BaseModel):
-    NOTIFICATION_TYPE = (
-        ('follower', 'Follower'),
-        ('update', 'Update'),
-        ('user', 'user'),
-    )
-
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    name = models.CharField(max_length=200)
-

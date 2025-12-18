@@ -14,7 +14,7 @@ urlpatterns = [
     path("account/login/", LoginView.as_view(), name="login"),
 
     # entry
-    path("home/", HomeView.as_view(), name="home"),
+    path("", HomeView.as_view(), name="home"),
     path("home/friends/", FriendView.as_view(), name="friend"),
     path("home/follower", FollowerView.as_view(), name="follower"),
     path("chat/<uuid:receive_id>/", ChatView.as_view(), name="chat"),
