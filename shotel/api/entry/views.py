@@ -12,7 +12,6 @@ from rest_framework.generics import (
 from shotel.app.user.models import User
 from shotel.app.entry.models import Follower
 from shotel.api.entry.serializers import (
-    ProfilSerializer,
     FollowerSerializer,
     FollowingSerializer
 )

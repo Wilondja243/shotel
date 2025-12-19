@@ -11,9 +11,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = [
-            'id', 'author', 'content', 'image', 'video', 'likes_count'
-        ]
+        fields = ['id', 'author', 'content', 'image', 'video', 'likes_count']
+        extra_kwargs = {'author': {'read_only': True}}
 
     def get_likes_count(self, obj):
         return obj.post_likes.count()
@@ -30,4 +29,8 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'user', 'post', 'content']
+        extra_kwargs = {
+            'user': {'read_only': True},
+            'post': {'read_only': True}
+        }
 

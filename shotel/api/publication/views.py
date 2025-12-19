@@ -9,12 +9,10 @@ from rest_framework.generics import (
     CreateAPIView,
     RetrieveAPIView
 )
-
 from shotel.api.publication.serializers import (
     PostSerializer,
     CommentSerializer,
 )
-
 from shotel.app.publication.models import (
     LikeComment,
     Post,
@@ -25,6 +23,7 @@ from shotel.app.publication.models import (
 
 class PostCreateView(CreateAPIView):
     serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated,]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -32,8 +31,46 @@ class PostCreateView(CreateAPIView):
 
 class PostListView(ListAPIView):
     serializer_class = PostSerializer
-    permission_classes = [AllowAny,]
+    permission_classes = [IsAuthenticated,]
     queryset = Post.objects.all()
+
+
+class CommentCreateView(CreateAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated,]
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        
+        response.data = {
+            "message": "Commentaire publié avec success!",
+            "status": status.HTTP_202_ACCEPTED
+        }
+
+        return response
+
+    def perform_create(self, serializer):
+        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
+        serializer.save(user=self.request.user, post=post)
+
+
+class CommentListView(ListAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated,]
+    
+    def get_queryset(self):
+        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
+        return Comment.objects.filter(post=post).select_related('user')
+    
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+
+        response.data = {
+            "count": len(response.data),
+            "objects": response.data,
+        }
+        
+        return response
 
 
 class ToggleLikeAPIView(APIView):

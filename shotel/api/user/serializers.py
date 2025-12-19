@@ -1,6 +1,7 @@
-
 from shotel.app.user.models import User
 from rest_framework import serializers
+from shotel.app.entry.models import Profile
+from shotel.api.serializers import UserMiniSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,7 +17,6 @@ class UserSerializer(serializers.ModelSerializer):
 
     
     def get_following_ids(self, obj):
-        print("obj.following.all(): ", obj.following.all())
         return list(obj.following.values_list('following_id', flat=True))
 
     def validate_email(self, value):
@@ -42,3 +42,13 @@ class LoginSerializer(serializers.Serializer):
         extra_kwargs = {
             'passwrod': {'write_only': True}
         }
+
+
+# Profil serializer
+class ProfilSerializer(serializers.ModelSerializer):
+    user = UserMiniSerializer(read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ['user', 'avatar', 'bio', 'update_at', 'created_at']
+        read_only_fields = ['user']

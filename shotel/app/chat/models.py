@@ -7,7 +7,7 @@ from shotel.app.core.models import BaseModel
 class Conversation(BaseModel):
     participants = models.ManyToManyField(
         settings.AUTH_USER_MODEL, 
-        related_name='conversation'
+        related_name='conversations'
     )
 
 

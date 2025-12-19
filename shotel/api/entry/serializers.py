@@ -1,15 +1,6 @@
 from rest_framework import serializers
-from shotel.app.entry.models import Follower, Profile
+from shotel.app.entry.models import Follower
 from shotel.api.serializers import UserMiniSerializer
-
-
-# Profil serializer
-class ProfilSerializer(serializers.ModelSerializer):
-    user = UserMiniSerializer(read_only=True)
-
-    class Meta:
-        model = Profile
-        fields = ['user', 'avatar', 'bio', 'update_at', 'created_at']
 
 
 # Followers serializer

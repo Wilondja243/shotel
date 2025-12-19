@@ -7,11 +7,21 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
-
+from rest_framework import parsers
+from rest_framework.generics import (
+    CreateAPIView,
+    RetrieveAPIView,
+    RetrieveUpdateAPIView
+)
 
 from shotel.app.user.models import User
-from shotel.api.user.serializers import LoginSerializer, UserSerializer
+from shotel.app.entry.models import Profile
+from shotel.api.user.serializers import (
+    LoginSerializer,
+    UserSerializer,
+    ProfilSerializer
+)
+
 
 class UserApiView(CreateAPIView):
     serializer_class = UserSerializer
@@ -94,3 +104,26 @@ class UserMeAPIView(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class ProfileDetailView(RetrieveUpdateAPIView):
+    serializer_class = ProfilSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Profile.objects.all()
+
+    parser_classes = [
+        parsers.MultiPartParser,
+        parsers.FormParser,
+        parsers.JSONParser
+    ]
+
+    def get_object(self):
+        return self.request.user.profile
+    
+
+class AddressUpdateView(RetrieveUpdateAPIView):
+    serializer_class = ProfilSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.profile.address
