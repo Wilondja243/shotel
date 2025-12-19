@@ -26,3 +26,8 @@ EMAIL_TIMEOUT=30
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
 ]
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
