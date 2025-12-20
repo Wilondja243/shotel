@@ -76,6 +76,8 @@ class CommentListView(ListAPIView):
 
 
 class ToggleLikeAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, post_id):
         user = request.user
 
@@ -86,7 +88,8 @@ class ToggleLikeAPIView(APIView):
         if like_exits.exists():
             like_exits.delete()
             return Response(
-                {"message": "Unliked", "is_liked": False}
+                {"message": "Unliked", "is_liked": False},
+                status=201
             )
         else:
             LikePost.objects.create(user=user, post=post)
@@ -98,6 +101,8 @@ class ToggleLikeAPIView(APIView):
 
 
 class ToggleLikeCommentAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, comment_id):
         user = request.user
 
@@ -108,7 +113,8 @@ class ToggleLikeCommentAPIView(APIView):
         if like_exits.first():
             like_exits.delete()
             return Response(
-                {"message": "Unliked", "is_liked": False}
+                {"message": "Unliked", "is_liked": False},
+                status=201
             )
         else:
             LikeComment.objects.create(user=user, comment=comment)
