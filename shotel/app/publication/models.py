@@ -2,11 +2,13 @@ from uuid import uuid4
 from django.db import models
 from django.conf import settings
 from shotel.app.core.models import BaseModel
+from .manager import PostQuerySet
 
 
 class Post(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
     content = models.TextField()
     image = models.ImageField(upload_to='posts/images/', null=True, blank=True)
     video = models.FileField(upload_to="posts/videos/", null=True, blank=True)
@@ -15,6 +17,8 @@ class Post(BaseModel):
         through='LikePost',
         related_name='like_posts'
     )
+
+    objects = PostQuerySet.as_manager()
 
 
 class Comment(BaseModel):

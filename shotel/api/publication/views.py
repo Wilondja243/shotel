@@ -32,7 +32,9 @@ class PostCreateView(CreateAPIView):
 class PostListView(ListAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated,]
-    queryset = Post.objects.all()
+
+    def get_queryset(self):
+        return Post.objects.post_rank(self.request.user)
 
 
 class CommentCreateView(CreateAPIView):
