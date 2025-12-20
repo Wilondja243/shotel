@@ -52,7 +52,7 @@ urlpatterns = [
     path('conversation/', ConversationListView.as_view(), name="conversation"),
 
     # Publication
-    path('post/', PostListView.as_view(), name='post'),
+    path('post/rank/', PostListView.as_view(), name='post'),
     path('post/create/', PostCreateView.as_view(), name="post-create"),
     path('post/comment-create/<uuid:post_id>/', CommentCreateView.as_view(), name="comment"),
     path('post/comment-list/<uuid:post_id>/', CommentListView.as_view(), name="comment-list"),
