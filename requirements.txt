@@ -8,11 +8,14 @@ channels==4.3.2
 constantly==23.10.4
 cryptography==46.0.3
 daphne==4.2.1
+dj-database-url==3.0.1
 Django==6.0
 django-cors-headers==4.9.0
 django-redis==6.0.0
 djangorestframework==3.16.1
+drf-extra-fields==3.7.0
 drf-yasg==1.21.11
+filetype==1.2.0
 hiredis==3.3.0
 hyperlink==21.0.0
 idna==3.11
