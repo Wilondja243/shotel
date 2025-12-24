@@ -10,8 +10,8 @@ from shotel.app.publication.models import Post, Comment
 class PostSerializer(serializers.ModelSerializer):
     author = UserMiniSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField(read_only=True)
-    image = Base64ImageField(required=False)
-    video = Base64FileField(required=False)
+    image = Base64ImageField(required=False, allow_null=True)
+    video = Base64FileField(required=False, allow_null=True)
 
     class Meta:
         model = Post
