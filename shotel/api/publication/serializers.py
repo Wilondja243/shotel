@@ -11,7 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = UserMiniSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField(read_only=True)
     image = Base64ImageField(require=False)
-    video = Base64FileField(required=False)
+    video = Base64FileField(require=False)
 
     class Meta:
         model = Post
