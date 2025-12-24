@@ -18,6 +18,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Storage
+    'cloudinary',
+    'cloudinary_storage',
+
     'channels',
     'rest_framework',
     'rest_framework.authtoken',
@@ -45,7 +49,7 @@ MIDDLEWARE = [
 # whitenoise storage
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
